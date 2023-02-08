@@ -1,0 +1,105 @@
+﻿@model List<Product>
+   
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 750px;
+        }
+        a:link {
+            color: black;
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: black;
+            text-decoration: underline;
+        }
+        .Table {
+            margin: 5px;
+            width:800px;
+            float:left;
+        }
+        .total{
+            height:30px;
+            width:500px;
+            padding:5px;
+        }
+        .confirmOrder {
+            height: 30px;
+            width: 600px;
+            padding-left: 300px;
+        }
+            .confirmOrder input {
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                font-size: 1em;
+                height: 30px;
+            }
+        .orders{
+            width:150px;
+            height:30px;
+            margin:5px;
+            float:right;
+        }
+            .confirmOrder input{
+                font-size:1em;
+            }
+
+            .Table table td {
+                width: 150px;
+                height: 30px;
+                border: solid 1px silver;
+                text-align: left;
+                vertical-align: middle;
+                padding-left: 2px;
+            }
+
+            .Table table tr td:first-child {
+                width: 50px;
+            }
+
+            .Table table tr td:nth-child(2) {
+                width: 250px;
+            }
+
+            .Table table tr td:last-child {
+                border: 0px;
+            }
+    </style>
+
+    <div class="Table">
+
+        @if (Model != null)
+        {
+            double sum = 0;
+            <table>
+                <tr><td>№</td><td>Product</td><td>Price of item</td><td>Quantity</td><td>Price</td><td></td></tr>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    double s = Model[i].Price * Model[i].Quantity;
+                    string s_string = string.Format("{0:f2}", s);
+                    sum += s;
+                    int j = i + 1;
+                    <tr><td>@j</td><td>@Model[i].Name</td><td>$@Model[i].Price</td><td>@Model[i].Quantity</td><td>$@s_string</td><td><a asp-controller="Home" asp-action="Cart" asp-route-deletedProductId="@Model[i].Id">Delete</a></td></tr>
+                }
+            </table>
+            <div class="total">
+                @{
+                    string sum_string = string.Format("{0:f2}", sum);
+                }
+                <p><b>Total: $@sum_string</b></p>
+            </div>
+            <div class="confirmOrder">
+                <form action="~/Order/ConfirmOrder">
+                    <input type="submit" value="Confirm Order" />
+                </form>
+            </div>
+        }
+        else
+        {
+            <p>There are no items in your chart</p>
+        }
+    </div>
+    <div class="orders">
+        <a href="/Order/OrderView">See your orders</a>
+    </div>

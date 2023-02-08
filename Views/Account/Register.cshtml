@@ -1,0 +1,57 @@
+﻿
+    <style>
+        input {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            height: 30px;
+        }
+        .Login {
+            display: flex;
+            justify-content: center;
+        }
+
+            .Login p:first-child {
+                padding-top: 10px;
+            }
+
+            .Login input {
+                font-size: 1em;
+            }
+
+        .button {
+            margin: 5px 0px 0px 70px;
+            height: 25px;
+        }
+    </style>
+
+    <div class="Login">
+        <form method="post" action="~/Account/Register">
+            <p>
+                <label for="name">Name:</label><br />
+                <input type="text" id="name" name="Name" required minlength="3" maxlength="20"/>
+            </p>
+            <p>
+                <label for="email">Email:</label><br />
+                <input type="text" id="email" name="Email" required />
+            </p>
+            <p>
+                <label for="phone">Phone:</label><br />
+                <input type="text" id="phone" name="PhoneNumber" required pattern="[0-9]{10}"/>
+            </p>
+            <p>
+                <label for="password">Password:</label><br />
+                <input type="password" id="password" name="Password" required minlength="3" maxlength="20"/>
+            </p>
+            <p>
+                <label for="confirmpassword">Confirm Password:</label><br />
+                <input type="password" id="confirmpassword" name="ConfirmPassword" required minlength="3" maxlength="20" />
+            </p>
+            <p>
+                <div class="button"><input type="submit" value="Register" /></div>
+            </p>
+
+        </form>
+    </div>
+
+

@@ -1,0 +1,45 @@
+﻿
+    <style>
+        input {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            height:30px;
+        }
+        .Login {
+            display: flex;
+            justify-content: center;
+        }
+
+            .Login p:first-child {
+                padding-top: 10px;
+            }
+
+            .Login input {
+                font-size: 1em;
+            }
+
+        .button {
+            margin: 5px 0px 10px 70px;
+            height: 30px;
+        }
+    </style>
+
+    <div class="Login">
+        <form method="post" action="~/Account/Login">
+            <p>
+                <label for="email">Email:</label><br />
+                <input type="text" id="email" name="Email" required  />
+            </p>
+            <p>
+                <label for="password">Password:</label><br />
+                <input type="password" id="password" name="Password" required minlength="3" maxlength="20"/>
+            </p>
+            <p>
+                <div class="button"><input type="submit" value="Log In" /></div>
+            </p>
+            <p>Don't have an account? <a href="/Account/Register">Register</a></p>
+        </form>
+    </div>
+
+

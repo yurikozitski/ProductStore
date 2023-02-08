@@ -1,0 +1,143 @@
+﻿@model List<OrderViewModel>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 750px;
+        margin-left:5px;
+    }
+    .Table {
+        margin: 5px;
+        width: 800px;
+        margin-right:40%;
+        height: contain;
+        float: left;
+        border: 1px solid #ac9f9f;
+        border-radius: 5px;
+    }
+    .total {
+        height: 30px;
+        width: 500px;
+        padding: 5px;
+    }
+    .userInfo {
+        height: 60px;
+        width: 500px;
+        padding: 5px;
+    }
+    .Table table td {
+        width: 150px;
+        height: 30px;
+        border: solid 1px silver;
+        text-align: left;
+        vertical-align: middle;
+        padding-left: 2px;
+    }
+    .Table span{
+        margin:4px;
+        display:inline-block;
+        float:left;
+    }
+
+    .Table table tr td:first-child {
+        width: 50px;
+    }
+
+    .Table table tr td:nth-child(2) {
+        width: 250px;
+    }
+.topTable{
+    display:inline-block;
+    height:30px;
+    width:750px;
+}
+    .topTable form{
+        height:25px;
+        width:100px;
+        float:right;
+        margin-right:50px;
+        margin-top:5px;
+    }
+    .topTable input {
+        border-radius: 5px;
+        background-color: #00ba18;
+        color: white;
+        border: 1px solid #00ba18;
+    }
+        .topTable input:hover {
+            background-color: white;
+            color: #00ba18;
+            border: 1px solid #00ba18;
+        }
+        .topTable input:disabled {
+            background-color: #f4f4f4;
+            color: #aaa;
+            border: 1px solid #aaa;
+        }
+</style>
+
+    @if (Model != null)
+    {
+        foreach (var order in Model)
+        {
+            double sum = 0;
+            string status=order.Order.IsDelivered==true?"Delivered":"Processing";
+            <div class="Table" id="@order.Order.Id">
+                <div class="topTable">
+                    <span>Order Id: @order.Order.Id</span><span>     </span><span>Time: @order.Order.DateOfOrder</span><span>     </span><span>Status: @status</span>
+                    @if (User.Identity.IsAuthenticated == true && User.IsInRole("manager"))
+                    {
+                        <form action="~/Manager/ChangeOrder">
+                            <input type="hidden" name="orderId" value="@order.Order.Id" />
+                            <input type="submit" value="DELIVERED" id="button-@order.Order.Id" />
+                        </form>
+                        if (order.Order.IsDelivered == true)
+                        {
+                            <script>
+                                var button = document.getElementById("button-@order.Order.Id");
+                                button.setAttribute('disabled', '');
+                            </script>
+                        }
+                    }
+                </div> 
+                <table>
+                    <tr><td>№</td><td>Product</td><td>Price of item</td><td>Quantity</td><td>Price</td></tr>
+                    @{int i = 1;
+                        foreach (var product in order.ProductsOrdered)
+                        {
+                            double s = product.Price * product.Quantity;
+                            string s_string = string.Format("{0:f2}", s);
+                            sum += s;
+                            <tr><td>@i</td><td>@product.Name</td><td>$@product.Price</td><td>@product.Quantity</td><td>$@s_string</td></tr>
+                            i++;
+                        }
+                     }
+                </table>
+                <div class="total">
+                    @{
+                        string sum_string = string.Format("{0:f2}", sum);
+                     }
+                    <p><b>Total: $@sum_string</b></p>
+                </div>
+                @if (User.Identity.IsAuthenticated == true && User.IsInRole("manager"))
+                 {
+                    <div class="userInfo">
+                        <p>User Name:&nbsp;@order.Order.User.Name</p>
+                        <p>Phone:&emsp;&emsp;&ensp;&nbsp;@order.Order.User.PhoneNumber</p>
+                        <p>Email:&emsp;&emsp;&emsp;&nbsp;@order.Order.User.Email</p>
+                        <script>document.getElementById(@order.Order.Id).style.height = @order.ProductsOrdered.Count* 30 + 160 + 'px'</script>
+                    </div>
+                 }
+                else if(User.Identity.IsAuthenticated == true && User.IsInRole("customer"))
+                {
+                    <script>document.getElementById(@order.Order.Id).style.height = @order.ProductsOrdered.Count* 30 + 90 + 'px'</script>
+                }
+                
+            </div>
+        }
+     }
+     else
+        {
+        <p>You have no orders</p>
+        }
+
