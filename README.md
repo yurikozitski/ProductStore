@@ -5,7 +5,7 @@ In this webapp implemented cookie-based authentication with two roles:"manager" 
 Manager has additional abilities to control over online shop.
 
 #### Starting page: 
-![screenshot1](Sreenshots/screenshot1.png)
+![screenshot1](Screenshots/screenshot1.png)
 
 #### Filters applied, user logged in:
 ![screenshot2](Screenshots/screenshot2.png)
