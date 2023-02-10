@@ -25,6 +25,8 @@ Manager has additional abilities to control over online shop.
 - CSS
 - Asp.Net Core 5
 - MVC
+- Entity Framework Core
+- SQL Server Express
 - Cookies
 - Authorization/Authentication
 - Visual Studio 2019 IDE
