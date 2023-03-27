@@ -23,8 +23,16 @@ namespace ProductStore.Controllers
         [Authorize(Roles = "customer")]
         public async Task<IActionResult> ConfirmOrder()
         {
-            Cart cart = await db.Carts.Include(c => c.User).FirstOrDefaultAsync(c => c.User.Email == User.Identity.Name);
-            Order order = new Order() { User = cart.User, ProductsOrdered = cart.ProductsInCart, DateOfOrder = DateTime.Now };
+            Cart cart = await db.Carts.Include(c => c.User)
+                .FirstOrDefaultAsync(c => c.User.Email == User.Identity.Name);
+
+            Order order = new Order() 
+            {
+                User = cart.User,
+                ProductsOrdered = cart.ProductsInCart,
+                DateOfOrder = DateTime.Now 
+            };
+
             cart.ProductsInCart = null;
             db.Orders.Add(order);
             await db.SaveChangesAsync();
@@ -36,18 +44,22 @@ namespace ProductStore.Controllers
         {
             
             var orders = new List<Order>();
-            if (User.Identity.IsAuthenticated == true && User.IsInRole("customer"))
+
+            if (User.Identity.IsAuthenticated && User.IsInRole("customer"))
             {
-                orders = await db.Orders.Include(o => o.User).Where(o => o.User.Email == User.Identity.Name).ToListAsync();
+                orders = await db.Orders.Include(o => o.User)
+                    .Where(o => o.User.Email == User.Identity.Name).ToListAsync();
             }
-            else if (User.Identity.IsAuthenticated == true && User.IsInRole("manager")) 
+            else if (User.Identity.IsAuthenticated && User.IsInRole("manager")) 
             {
                 orders = await db.Orders.Include(o => o.User).ToListAsync();
             }
+
             if (orders.Count==0)
             {
                 return View();
             }
+
             List<OrderViewModel> ordersViewModel = new List<OrderViewModel>();
             foreach (Order order in orders)
             {
@@ -55,6 +67,7 @@ namespace ProductStore.Controllers
                 orderViewModel.ProductsOrdered= await gp.GetProductListAsync(order.ProductsOrdered);
                 ordersViewModel.Add(orderViewModel);
             }
+
             return View(ordersViewModel);
         }
     }

@@ -38,6 +38,7 @@ namespace ProductStore
                 });
             services.AddControllersWithViews();
             services.AddTransient<IProductsProvider, GetProducts>();
+            services.AddScoped<IDataInitializer, DataInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

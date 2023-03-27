@@ -63,7 +63,17 @@ namespace ProductStore.Controllers
                 NumberFormatInfo provider = new NumberFormatInfo();
                 provider.NumberDecimalSeparator = ",";
                 double priceDouble= Convert.ToDouble(price, provider);
-                Product product = new Product() {Name=name,Shape=shape,Color=color,Image=path,Price=priceDouble,Quantity=quantity };
+
+                Product product = new Product() 
+                {
+                    Name=name,
+                    Shape=shape,
+                    Color=color,
+                    Image=path,
+                    Price=priceDouble,
+                    Quantity=quantity 
+                };
+
                 db.Products.Add(product);
                 await db.SaveChangesAsync();
             }

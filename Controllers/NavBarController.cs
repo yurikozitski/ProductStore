@@ -36,17 +36,14 @@ namespace ProductStore.Controllers
         }
         public IActionResult Contacts()
         {
-
             return View();
         }
         public IActionResult Faq()
         {
-
             return View();
         }
         public IActionResult Aboutus()
         {
-
             return View();
         }
     }

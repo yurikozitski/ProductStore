@@ -34,7 +34,10 @@ namespace ProductStore.Controllers
             if (user == null)
             {
                    
-                user = new User {Name=model.Name, Email = model.Email, PhoneNumber=model.PhoneNumber, Password = model.Password };
+                user = new User {Name=model.Name,
+                    Email = model.Email,
+                    PhoneNumber=model.PhoneNumber,
+                    Password = model.Password };
                 Role userRole = await db.Roles.FirstOrDefaultAsync(r => r.Name == "customer");
                 if (userRole != null)
                     user.Role = userRole;
