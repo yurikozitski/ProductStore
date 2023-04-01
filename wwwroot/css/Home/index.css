@@ -1,0 +1,220 @@
+﻿
+.sidebar {
+    height: 100%;
+    min-height: 550px;
+    float: left;
+    width: 20%;
+    min-width: 250px;
+    background-color: #f3e8e8;
+    border-right: 1px solid #ccc;
+}
+
+.sidebar button {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    height: 40px;
+    width: 100px;
+}
+
+.namefilter {
+    margin: 20px;
+}
+
+    .namefilter input {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 30px;
+    }
+
+.sort {
+    margin: 20px;
+}
+
+    .sort p {
+        margin: 5px 5px 5px 0px;
+    }
+
+.aplyfltr {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+    .aplyfltr input {
+        font-size: 1.2em;
+    }
+
+.prod_view {
+    height: 220px;
+    width: 220px;
+    padding: 10px;
+    float: left;
+    border: 1px solid #ccc;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+    .prod_view .prod_img_container {
+        height: 120px;
+        width: 120px;
+        margin-left: 29px;
+    }
+
+    .prod_view img {
+        height: 120px;
+        width: 120px;
+    }
+
+    .prod_view p {
+        height: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+.price {
+    float: left;
+    height: 20px;
+    width: 80px;
+    margin-top: 10px;
+}
+
+.prod_view input {
+    margin-top: 6px;
+    margin-left: 18px;
+    font-size: 1em;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+    .prod_view input:last-child {
+        margin-top: 6px;
+        margin-left: 0px;
+        font-size: 1em;
+        width: 200px;
+    }
+
+.prod_view_manager {
+    height: 245px;
+    width: 220px;
+    padding: 10px;
+    float: left;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+    .prod_view_manager .prod_img_container {
+        height: 100px;
+        width: 100px;
+        margin-left: 49px;
+    }
+
+    .prod_view_manager img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .prod_view_manager #form1 input:nth-of-type(1) {
+        width: 200px;
+        margin-bottom: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+.inputPrice {
+    height: 45px;
+    width: 90px;
+    float: left;
+}
+
+.setQuantity {
+    height: 45px;
+    width: 90px;
+    float: right;
+}
+
+.prod_view_manager #form1 .inputPrice input:nth-of-type(1) {
+    width: 80px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.prod_view_manager #form1 .setQuantity input:nth-of-type(1) {
+    width: 80px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.prod_view_manager #form1 input:nth-of-type(3) {
+    width: 200px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: #00ba18;
+    color: white;
+    border: 1px solid #00ba18;
+}
+
+    .prod_view_manager #form1 input:nth-of-type(3):hover {
+        background-color: white;
+        color: #00ba18;
+        border: 1px solid #00ba18;
+    }
+
+.prod_view_manager #form1 label {
+    font-size: 0.8em;
+}
+
+.prod_view_manager #form2 input:nth-of-type(2) {
+    width: 200px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+
+    .prod_view_manager #form2 input:nth-of-type(2):hover {
+        background-color: white;
+        color: red;
+        border: 1px solid red;
+    }
+
+.previouspage {
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    width: 120px;
+    margin-left: 400px;
+    margin-bottom: 5px;
+}
+
+    .previouspage input {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 1em;
+        height: 30px;
+        width: 150px;
+    }
+
+.nextpage {
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    width: 120px;
+    margin-left: 550px;
+    margin-bottom: 5px;
+}
+
+    .nextpage input {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 1em;
+        height: 30px;
+        width: 150px;
+    }
+
+

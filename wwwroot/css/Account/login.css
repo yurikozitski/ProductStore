@@ -1,0 +1,27 @@
+﻿
+input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    height: 30px;
+}
+
+.Login {
+    display: flex;
+    justify-content: center;
+}
+
+    .Login p:first-child {
+        padding-top: 10px;
+    }
+
+    .Login input {
+        font-size: 1em;
+    }
+
+.button {
+    margin: 5px 0px 10px 70px;
+    height: 30px;
+}
+
+
